@@ -1,0 +1,65 @@
+﻿@page
+@model BoodschappenInformatie.Pages.AdminWinkels.EditModel
+
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Winkel</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Winkel.Id" />
+			<div class="form-group">
+				<label asp-for="Winkel.WinkelKetenId" class="control-label"></label>
+				<input asp-for="Winkel.WinkelKetenId" class="form-control" />
+				<span asp-validation-for="Winkel.WinkelKetenId" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.WinkelName" class="control-label"></label>
+				<input asp-for="Winkel.WinkelName" class="form-control" />
+				<span asp-validation-for="Winkel.WinkelName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.Address" class="control-label"></label>
+				<input asp-for="Winkel.Address" class="form-control" />
+				<span asp-validation-for="Winkel.Address" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.Postcode" class="control-label"></label>
+				<input asp-for="Winkel.Postcode" class="form-control" />
+				<span asp-validation-for="Winkel.Postcode" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.City" class="control-label"></label>
+				<input asp-for="Winkel.City" class="form-control" />
+				<span asp-validation-for="Winkel.City" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.PhoneNumber" class="control-label"></label>
+				<input asp-for="Winkel.PhoneNumber" class="form-control" />
+				<span asp-validation-for="Winkel.PhoneNumber" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Winkel.MailAddress" class="control-label"></label>
+				<input asp-for="Winkel.MailAddress" class="form-control" />
+				<span asp-validation-for="Winkel.MailAddress" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

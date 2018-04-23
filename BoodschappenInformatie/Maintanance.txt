@@ -81,6 +81,9 @@ SET ANSI_WARNINGS ON
 COMMIT
 BEGIN TRANSACTION
 GO
+ALTER TABLE dbo.Winkel
+	DROP CONSTRAINT FK_Winkel_WinkelKeten
+GO
 ALTER TABLE dbo.WinkelKeten SET (LOCK_ESCALATION = TABLE)
 GO
 COMMIT
@@ -89,7 +92,7 @@ GO
 ALTER TABLE dbo.Winkel ADD CONSTRAINT
 	FK_Winkel_WinkelKeten FOREIGN KEY
 	(
-	Id
+	WinkelKetenId
 	) REFERENCES dbo.WinkelKeten
 	(
 	Id
@@ -118,6 +121,11 @@ using BoodschappenInformatie.Data;
 		"BoodschappenConnection": "Trusted_Connection=True;Data Source=(Local);Database=Boodschappen;MultipleActiveResultSets=true"
 	},
 
-	2018-04-23: Created "Pages\AdminKetens" folder
-	2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
-	2018-04-23: Started application for testing
+2018-04-23: Created "Pages\AdminKetens" folder
+2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+2018-04-23: Started application for testing
+
+2018-04-23: Created "AdminWinkels" folder
+2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+2018-04-23: The "AdminWinkels" page is not showing a "WinkelKeten" dropdown
+

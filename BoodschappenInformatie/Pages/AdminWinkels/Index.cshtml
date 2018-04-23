@@ -1,0 +1,73 @@
+﻿@page
+@model BoodschappenInformatie.Pages.AdminWinkels.IndexModel
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	<a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].WinkelKetenId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].WinkelName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].Address)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].Postcode)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].City)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].PhoneNumber)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].MailAddress)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Winkel)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.WinkelKetenId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.WinkelName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Postcode)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.City)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PhoneNumber)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.MailAddress)
+				</td>
+				<td>
+					<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+					<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+					<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
