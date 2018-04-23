@@ -118,3 +118,6 @@ using BoodschappenInformatie.Data;
 		"BoodschappenConnection": "Trusted_Connection=True;Data Source=(Local);Database=Boodschappen;MultipleActiveResultSets=true"
 	},
 
+	2018-04-23: Created "Pages\AdminKetens" folder
+	2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+	2018-04-23: Started application for testing
