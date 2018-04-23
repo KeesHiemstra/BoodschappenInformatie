@@ -105,7 +105,7 @@ GO
 COMMIT
 
 2018-04-23: Created "Data" folder
-2018-04-23: Created "BoodschappenContext.cs"
+2018-04-23: Created "Data\BoodschappenContext.cs"
 
 using Microsoft.EntityFrameworkCore;
 using BoodschappenInformatie.Models;
@@ -319,3 +319,5 @@ ALTER TABLE dbo.KassaBonItem SET (LOCK_ESCALATION = TABLE)
 GO
 COMMIT
 
+2018-04-23: Added "Boodschappen" folder
+2018-04-23: Updated "Data\BoodschappenContext.cs"

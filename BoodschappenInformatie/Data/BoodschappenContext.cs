@@ -18,5 +18,8 @@ namespace BoodschappenInformatie.Data
 
 		public DbSet<WinkelKeten> WinkelKetens { get; set; }
 		public DbSet<Winkel> Winkels { get; set; }
+		public DbSet<Boodschap> Boodschappen { get; set; }
+		public DbSet<KassaBon> KassaBonnen { get; set; }
+		public DbSet<KassaBonItem> KassaBonItems { get; set; }
 	}
 }
