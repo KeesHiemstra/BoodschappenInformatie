@@ -21,6 +21,7 @@ namespace BoodschappenInformatie.Pages.AdminWinkels
 
 		public IActionResult OnGet()
 		{
+			ViewData["WinkelKetenId"] = new SelectList(_context.WinkelKetens, "Id", "KetenName");
 			return Page();
 		}
 

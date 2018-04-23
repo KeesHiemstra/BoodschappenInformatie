@@ -30,12 +30,14 @@ namespace BoodschappenInformatie.Pages.AdminWinkels
 				return NotFound();
 			}
 
-			Winkel = await _context.Winkels.SingleOrDefaultAsync(m => m.Id == id);
+			Winkel = await _context.Winkels
+					.Include(w => w.WinkelKeten).SingleOrDefaultAsync(m => m.Id == id);
 
 			if (Winkel == null)
 			{
 				return NotFound();
 			}
+			ViewData["WinkelKetenId"] = new SelectList(_context.WinkelKetens, "Id", "KetenName");
 			return Page();
 		}
 

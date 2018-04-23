@@ -46,5 +46,8 @@ namespace BoodschappenInformatie.Models
 		[DataType(DataType.EmailAddress)]
 		[Display(Name = "Mailadres")]
 		public string MailAddress { get; set; }
+
+		[Display(Name = "Winkel keten")]
+		public virtual WinkelKeten WinkelKeten { get; set; }
 	}
 }

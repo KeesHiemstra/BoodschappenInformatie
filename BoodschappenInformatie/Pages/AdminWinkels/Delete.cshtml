@@ -13,12 +13,6 @@
 	<hr />
 	<dl class="dl-horizontal">
 		<dt>
-			@Html.DisplayNameFor(model => model.Winkel.WinkelKetenId)
-		</dt>
-		<dd>
-			@Html.DisplayFor(model => model.Winkel.WinkelKetenId)
-		</dd>
-		<dt>
 			@Html.DisplayNameFor(model => model.Winkel.WinkelName)
 		</dt>
 		<dd>
@@ -53,6 +47,12 @@
 		</dt>
 		<dd>
 			@Html.DisplayFor(model => model.Winkel.MailAddress)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Winkel.WinkelKeten)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Winkel.WinkelKeten.KetenName)
 		</dd>
 	</dl>
 

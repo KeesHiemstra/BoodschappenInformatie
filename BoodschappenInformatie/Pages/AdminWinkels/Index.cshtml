@@ -14,9 +14,6 @@
 	<thead>
 		<tr>
 			<th>
-				@Html.DisplayNameFor(model => model.Winkel[0].WinkelKetenId)
-			</th>
-			<th>
 				@Html.DisplayNameFor(model => model.Winkel[0].WinkelName)
 			</th>
 			<th>
@@ -34,6 +31,9 @@
 			<th>
 				@Html.DisplayNameFor(model => model.Winkel[0].MailAddress)
 			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Winkel[0].WinkelKeten)
+			</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -41,9 +41,6 @@
 		@foreach (var item in Model.Winkel)
 		{
 			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.WinkelKetenId)
-				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.WinkelName)
 				</td>
@@ -61,6 +58,9 @@
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.MailAddress)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.WinkelKeten.KetenName)
 				</td>
 				<td>
 					<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
