@@ -1,0 +1,120 @@
+﻿2018-04-23: Updated _Layout.cshtml
+2018-04-23: Created "Models" folder
+2018-04-23: Created "WinkelKeten.cs"
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+2018-04-23: Created "Winkel.cs"
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+2018-04-23: Created database "Boodschappen"
+2018-04-23: Created table "WinkelKeten"
+
+USE [Boodschappen]
+GO
+
+/****** Object:  Table [dbo].[WinkelKeten]    Script Date: 2018-04-23 10:14:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[WinkelKeten](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[KetenName] [varchar](25) NOT NULL,
+ CONSTRAINT [PK_WinkelKeten] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+2018-04-23: Created table "Winkel"
+
+USE [Boodschappen]
+GO
+
+/****** Object:  Table [dbo].[Winkel]    Script Date: 2018-04-23 10:15:23 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Winkel](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[WinkelName] [varchar](50) NOT NULL,
+	[Address] [varchar](50) NULL,
+	[Postcode] [varchar](7) NULL,
+	[City] [varchar](25) NOT NULL,
+	[PhoneNumber] [varchar](15) NULL,
+	[MailAddress] [varchar](50) NULL,
+ CONSTRAINT [PK_Winkel] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Winkel]  WITH CHECK ADD  CONSTRAINT [FK_Winkel_WinkelKeten] FOREIGN KEY([Id])
+REFERENCES [dbo].[WinkelKeten] ([Id])
+GO
+
+ALTER TABLE [dbo].[Winkel] CHECK CONSTRAINT [FK_Winkel_WinkelKeten]
+GO
+
+2018-04-24: Created "Winkel" reference to "WinkelKeten"
+
+/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.WinkelKeten SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.Winkel ADD CONSTRAINT
+	FK_Winkel_WinkelKeten FOREIGN KEY
+	(
+	Id
+	) REFERENCES dbo.WinkelKeten
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.Winkel SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+
+2018-04-23: Created "Data" folder
+2018-04-23: Created "BoodschappenContext.cs"
+
+using Microsoft.EntityFrameworkCore;
+using BoodschappenInformatie.Models;
+
+2018-04-23: Updated "Startup.cs"
+
+using Microsoft.EntityFrameworkCore;
+using BoodschappenInformatie.Data;
+
+2018-04-23: Updated "appsettings.json"
+
+	"ConnectionStrings": {
+		"BoodschappenConnection": "Trusted_Connection=True;Data Source=(Local);Database=Boodschappen;MultipleActiveResultSets=true"
+	},
+
