@@ -1,11 +1,11 @@
 ﻿2018-04-23: Updated _Layout.cshtml
 2018-04-23: Created "Models" folder
-2018-04-23: Created "WinkelKeten.cs"
+2018-04-23: Created "Models\WinkelKeten.cs"
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-2018-04-23: Created "Winkel.cs"
+2018-04-23: Created "Models\Winkel.cs"
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -128,4 +128,194 @@ using BoodschappenInformatie.Data;
 2018-04-23: Created "AdminWinkels" folder
 2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
 2018-04-23: The "AdminWinkels" page is not showing a "WinkelKeten" dropdown
+2018-04-23: Removed the folder "AdminWinkels"
+
+2018-04-23: Updated "WinkelModel" in "Winkel.cs"
+2018-04-23: Created "AdminWinkels" folder
+2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+
+2018-04-23: Created "Models\Boodschap.cs"
+2018-04-23: Created "Models\KassaBon.cs"
+2018-04-23: Created "Models\KassaBonItem.cs"
+
+2018-04-23: Created table "Boodschap"
+
+USE [Boodschappen]
+GO
+
+/****** Object:  Table [dbo].[Boodschap]    Script Date: 2018-04-23 16:41:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Boodschap](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[BoodschapName] [varchar](25) NOT NULL,
+	[Description] [varchar](50) NULL,
+	[Package] [char](2) NULL,
+	[Prijs] [money] NULL,
+ CONSTRAINT [PK_Boodschap] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+2018-04-23: Created table "KassaBon"
+
+USE [Boodschappen]
+GO
+
+/****** Object:  Table [dbo].[KassaBon]    Script Date: 2018-04-23 16:37:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[KassaBon](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[WinkelId] [int] NOT NULL,
+	[Description] [varchar](50) NULL,
+	[BonDate] [datetime] NOT NULL,
+	[SubTotaal] [money] NULL,
+	[TotaalKorting] [money] NULL,
+	[TotaalPrijs] [money] NOT NULL,
+ CONSTRAINT [PK_KassaBon] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[KassaBon]  WITH CHECK ADD  CONSTRAINT [FK_KassaBon_Winkel] FOREIGN KEY([WinkelId])
+REFERENCES [dbo].[Winkel] ([Id])
+GO
+
+ALTER TABLE [dbo].[KassaBon] CHECK CONSTRAINT [FK_KassaBon_Winkel]
+GO
+
+2018-04-23: Created "Winkel" reference to "KassaBon"
+
+/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.Winkel SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.KassaBon ADD CONSTRAINT
+	FK_KassaBon_Winkel FOREIGN KEY
+	(
+	WinkelId
+	) REFERENCES dbo.Winkel
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.KassaBon SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+
+2018-04-23: Created table "KassaBonItem"
+
+USE [Boodschappen]
+GO
+
+/****** Object:  Table [dbo].[KassaBonItem]    Script Date: 2018-04-23 16:38:42 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[KassaBonItem](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[KassaBonId] [int] NOT NULL,
+	[BoodschapId] [int] NOT NULL,
+	[Aantal] [int] NULL,
+	[Hoeveelheid] [decimal](18, 4) NULL,
+	[PrijsPerItem] [money] NULL,
+	[Prijs] [money] NOT NULL,
+	[Korting] [money] NULL,
+	[Commentaar] [varchar](50) NULL,
+ CONSTRAINT [PK_KassaBonItem] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[KassaBonItem] ADD  CONSTRAINT [DF_KassaBonItem_Aantal]  DEFAULT ((1)) FOR [Aantal]
+GO
+
+2018-04-23: Created "KassaBon" reference to "KassaBonItem"
+
+/* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.KassaBonItem
+	DROP CONSTRAINT FK_KassaBonItem_Boodschap
+GO
+ALTER TABLE dbo.Boodschap SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.KassaBonItem
+	DROP CONSTRAINT FK_KassaBonItem_KassaBon
+GO
+ALTER TABLE dbo.KassaBon SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.KassaBonItem ADD CONSTRAINT
+	FK_KassaBonItem_KassaBon FOREIGN KEY
+	(
+	KassaBonId
+	) REFERENCES dbo.KassaBon
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.KassaBonItem ADD CONSTRAINT
+	FK_KassaBonItem_Boodschap FOREIGN KEY
+	(
+	BoodschapId
+	) REFERENCES dbo.Boodschap
+	(
+	Id
+	) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+GO
+ALTER TABLE dbo.KassaBonItem SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
 

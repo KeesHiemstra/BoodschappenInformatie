@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-/* Is part of a WinkelKeten.
+/* Is part of WinkelKeten.
  * 
  * 2018-04-23: Added model.
  * 2018-04-23: Added display tags.
