@@ -1,0 +1,43 @@
+﻿@page
+@model BoodschappenInformatie.Pages.Boodschappen.DetailsModel
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>Boodschap</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.BoodschapName)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.BoodschapName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Description)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Description)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Package)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Package)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Prijs)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Prijs)
+		</dd>
+	</dl>
+</div>
+<div>
+	<a asp-page="./Edit" asp-route-id="@Model.Boodschap.Id">Edit</a> |
+	<a asp-page="./Index">Back to List</a>
+</div>

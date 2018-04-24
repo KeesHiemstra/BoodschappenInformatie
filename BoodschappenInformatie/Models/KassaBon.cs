@@ -29,13 +29,16 @@ namespace BoodschappenInformatie.Models
 		public DateTime BonDate { get; set; }
 
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? SubTotaal { get; set; }
 
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? TotaalKorting { get; set; }
 
 		[Required]
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal TotaalPrijs { get; set; }
 
 		public virtual Winkel Winkel { get; set; }

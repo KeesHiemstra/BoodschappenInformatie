@@ -1,0 +1,46 @@
+﻿@page
+@model BoodschappenInformatie.Pages.Boodschappen.DeleteModel
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+	<h4>Boodschap</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.BoodschapName)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.BoodschapName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Description)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Description)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Package)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Package)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Boodschap.Prijs)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Boodschap.Prijs)
+		</dd>
+	</dl>
+
+	<form method="post">
+		<input type="hidden" asp-for="Boodschap.Id" />
+		<input type="submit" value="Delete" class="btn btn-default" /> |
+		<a asp-page="./Index">Back to List</a>
+	</form>
+</div>

@@ -33,9 +33,10 @@ namespace BoodschappenInformatie.Models
 		public string Description { get; set; }
 
 		[StringLength(2)]
-		public PackageType? Package { get; set; }
+		public string Package { get; set; }
 
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? Prijs { get; set; }
 	}
 }

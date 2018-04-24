@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BoodschappenInformatie.Data;
 using BoodschappenInformatie.Models;
 
-namespace BoodschappenInformatie.Pages.AdminKetens
+namespace BoodschappenInformatie.Pages.Boodschappen
 {
 	public class IndexModel : PageModel
 	{
@@ -19,13 +19,14 @@ namespace BoodschappenInformatie.Pages.AdminKetens
 			_context = context;
 		}
 
-		public IList<WinkelKeten> WinkelKeten { get; set; }
+		public IList<Boodschap> Boodschap { get; set; }
 
 		public async Task OnGetAsync()
 		{
-			WinkelKeten = await _context.WinkelKetens
+			// Added sorting in the list of Boodschappen
+			Boodschap = await _context.Boodschappen
 				.AsNoTracking()
-				.OrderBy(w => w.KetenName)
+				.OrderBy(m => m.BoodschapName)
 				.ToListAsync();
 		}
 	}

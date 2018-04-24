@@ -26,17 +26,21 @@ namespace BoodschappenInformatie.Models
 		public int Aantal { get; set; }
 
 		[Display(Name = "Hoeveelheid per st/kg", Description = "Weegschaal gegevens")]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? Hoeveelheid { get; set; }
 
 		[DataType(DataType.Currency)]
 		[Display(Name = "Prijs/item")]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? PrijsPerItem { get; set; }
 
 		[Required]
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal Prijs { get; set; }
 
 		[DataType(DataType.Currency)]
+		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? Korting { get; set; }
 
 		[StringLength(50)]

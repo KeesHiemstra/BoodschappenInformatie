@@ -319,5 +319,10 @@ ALTER TABLE dbo.KassaBonItem SET (LOCK_ESCALATION = TABLE)
 GO
 COMMIT
 
-2018-04-23: Added "Boodschappen" folder
+2018-04-23: Added "Pages\Boodschappen" folder
 2018-04-23: Updated "Data\BoodschappenContext.cs"
+2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+
+2018-04-24: Added sorting the list on the index pages
+2018-04-24: Added "Pages\KassaBonnen" folder
+2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"

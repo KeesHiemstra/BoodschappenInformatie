@@ -24,7 +24,9 @@ namespace BoodschappenInformatie.Pages.AdminWinkels
 		public async Task OnGetAsync()
 		{
 			Winkel = await _context.Winkels
-					.Include(w => w.WinkelKeten).ToListAsync();
+				.AsNoTracking()
+				.OrderBy(w => w.WinkelName)
+				.Include(w => w.WinkelKeten).ToListAsync();
 		}
 	}
 }
