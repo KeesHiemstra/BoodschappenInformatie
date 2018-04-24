@@ -16,6 +16,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\KassaBonnen\" />
+    <Folder Include="Pages\KassaBonnen\Items\" />
   </ItemGroup>
 </Project>

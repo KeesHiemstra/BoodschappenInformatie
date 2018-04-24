@@ -25,19 +25,23 @@ namespace BoodschappenInformatie.Models
 		public string Description { get; set; }
 
 		[Required]
+		[Display(Name = "Bon datum")]
 		[DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
 		public DateTime BonDate { get; set; }
 
 		[DataType(DataType.Currency)]
+		[Display(Name = "Subtotaal")]
 		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? SubTotaal { get; set; }
 
 		[DataType(DataType.Currency)]
+		[Display(Name = "Totaal korting")]
 		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? TotaalKorting { get; set; }
 
 		[Required]
 		[DataType(DataType.Currency)]
+		[Display(Name = "Totaal prijs")]
 		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal TotaalPrijs { get; set; }
 

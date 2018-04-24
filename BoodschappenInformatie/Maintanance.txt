@@ -325,4 +325,8 @@ COMMIT
 
 2018-04-24: Added sorting the list on the index pages
 2018-04-24: Added "Pages\KassaBonnen" folder
-2018-04-23: Added with "Razor Pages using Entity Framework (CRUD)"
+2018-04-24: Added with "Razor Pages using Entity Framework (CRUD)"
+
+2018:04-24: Enlarged Boodschap.Name to 30 characters
+2018-04-24: Added autofocus to all pages
+2018-04-24: Added "Pages\KassaBonnen\Items" folder

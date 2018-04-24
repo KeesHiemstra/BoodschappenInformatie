@@ -24,7 +24,7 @@ namespace BoodschappenInformatie.Models
 		public int Id { get; set; }
 
 		[Required]
-		[StringLength(25)]
+		[StringLength(30)]
 		[Display(Name = "Boodschap naam")]
 		public string BoodschapName { get; set; }
 
