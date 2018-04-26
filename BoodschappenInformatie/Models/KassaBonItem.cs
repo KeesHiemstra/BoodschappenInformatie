@@ -23,9 +23,7 @@ namespace BoodschappenInformatie.Models
 		[Required]
 		public int BoodschapId { get; set; }
 
-		public int Aantal { get; set; }
-
-		[Display(Name = "Hoeveelheid per st/kg", Description = "Weegschaal gegevens")]
+		[Display(Name = "Aantal/Hoeveelheid per st/kg", Description = "Weegschaal gegevens")]
 		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
 		public decimal? Hoeveelheid { get; set; }
 
@@ -44,7 +42,7 @@ namespace BoodschappenInformatie.Models
 		public decimal? Korting { get; set; }
 
 		[StringLength(50)]
-		[Display(Name = "`Commentaar")]
+		[Display(Name = "Commentaar")]
 		public string Commentaar { get; set; }
 
 		public virtual Boodschap Boodschap { get; set; }

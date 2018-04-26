@@ -1,0 +1,64 @@
+﻿@page
+@model BoodschappenInformatie.Pages.KassaBonnen.Items.DeleteModel
+
+@{
+	ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+	<h4>KassaBonItem</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.KassaBon.BonDate)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.KassaBon.BonDate)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Boodschap)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Boodschap.BoodschapName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Hoeveelheid)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Hoeveelheid)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.PrijsPerItem)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.PrijsPerItem)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Prijs)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Prijs)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Korting)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Korting)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Commentaar)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Commentaar)
+		</dd>
+	</dl>
+
+	<form method="post">
+		<input type="hidden" asp-for="KassaBonItem.Id" />
+		<input type="submit" value="Delete" class="btn btn-default" /> |
+		<a asp-page="./Index">Back to List</a>
+	</form>
+</div>

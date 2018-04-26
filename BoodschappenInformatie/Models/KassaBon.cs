@@ -26,7 +26,7 @@ namespace BoodschappenInformatie.Models
 
 		[Required]
 		[Display(Name = "Bon datum")]
-		[DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm:ss}", ApplyFormatInEditMode = true)]
+		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}", ApplyFormatInEditMode = true)]
 		public DateTime BonDate { get; set; }
 
 		[DataType(DataType.Currency)]

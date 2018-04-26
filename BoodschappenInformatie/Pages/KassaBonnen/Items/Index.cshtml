@@ -1,0 +1,73 @@
+﻿@page
+@model BoodschappenInformatie.Pages.KassaBonnen.Items.IndexModel
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	<a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].KassaBon.BonDate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].Hoeveelheid)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].Boodschap)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].PrijsPerItem)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].Prijs)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].Korting)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.KassaBonItem[0].Commentaar)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.KassaBonItem)
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.KassaBon.BonDate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Hoeveelheid)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Boodschap.BoodschapName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PrijsPerItem)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Prijs)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Korting)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Commentaar)
+			</td>
+			<td>
+				<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+				<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+				<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+			</td>
+		</tr>
+		}
+	</tbody>
+</table>
