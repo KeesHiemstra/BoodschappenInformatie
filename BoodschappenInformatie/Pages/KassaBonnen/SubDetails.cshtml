@@ -1,0 +1,63 @@
+﻿@page
+@model BoodschappenInformatie.Pages.KassaBonnen.DetailsItems.DetailsModel
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>KassaBonItem</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		@*
+			<dt>
+				@Html.DisplayNameFor(model => model.KassaBonItem.KassaBon)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.KassaBonItem.KassaBon.Id)
+			</dd>
+		*@
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Boodschap)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Boodschap.BoodschapName)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Hoeveelheid)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Hoeveelheid)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.PrijsPerItem)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.PrijsPerItem)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Prijs)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Prijs)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Korting)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Korting)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.KassaBonItem.Commentaar)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.KassaBonItem.Commentaar)
+		</dd>
+	</dl>
+</div>
+<div>
+	<a asp-page="./SubEdit" asp-route-id="@Model.KassaBonItem.Id">Edit</a> |
+	<a asp-page="./Details">Back to List</a>
+</div>

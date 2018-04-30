@@ -24,7 +24,7 @@ namespace BoodschappenInformatie.Models
 		public int BoodschapId { get; set; }
 
 		[Display(Name = "Aantal/Hoeveelheid per st/kg", Description = "Weegschaal gegevens")]
-		[DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
+		[DisplayFormat(DataFormatString = "{0:0.000}", ApplyFormatInEditMode = true)]
 		public decimal? Hoeveelheid { get; set; }
 
 		[DataType(DataType.Currency)]

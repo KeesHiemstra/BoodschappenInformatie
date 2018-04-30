@@ -333,3 +333,14 @@ COMMIT
 
 2018-04-26: Added with "Razor Pages using Entity Framework (CRUD)"
 2018-04-26: Deleted the field "Aantal" from the table "KassaBonItem" and pages
+
+2018-04-27: Added "Pages\KassaBonnen\DetailsItems" folder
+2018-04-27: Added with "Razor Pages using Entity Framework (CRUD)"
+2018-04-27: Added KassaBonItem list in "KassaBonnen\Details" and filtered on the KassaBonId
+
+2018-04-29: Used the "Pages\KassaBonnen\DetailsItems\Index" to build the sub page in "Pages\KassaBonnen\Details"
+2018-04-29: Renamed the Create, Delete, Details and Edit to Sub* and moved it to the folder "Pages\KassaBonnen\Details"
+2018-04-29: SubCreate is working good
+2018-04-29: SubEdit is causing an error while clicking the save button
+
+2018-04-30: Remove the folder "Pages\KassaBonnen\DetailsItems"

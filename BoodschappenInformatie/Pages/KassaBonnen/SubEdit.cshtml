@@ -1,0 +1,66 @@
+﻿@page
+@model BoodschappenInformatie.Pages.KassaBonnen.DetailsItems.EditModel
+
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h2>Edit bon item</h2>
+
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="KassaBonItem.Id" />
+			@*
+				<div class="form-group">
+					<label asp-for="KassaBonItem.KassaBonId" class="control-label"></label>
+					<select asp-for="KassaBonItem.KassaBonId" class="form-control" asp-items="ViewBag.KassaBonId"></select>
+					<span asp-validation-for="KassaBonItem.KassaBonId" class="text-danger"></span>
+				</div>
+			*@
+			<div class="form-group">
+				<label asp-for="KassaBonItem.BoodschapId" class="control-label">Boodschap</label>
+				<select asp-for="KassaBonItem.BoodschapId" class="form-control" asp-items="ViewBag.BoodschapId"></select>
+				<span asp-validation-for="KassaBonItem.BoodschapId" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KassaBonItem.Hoeveelheid" class="control-label"></label>
+				<input asp-for="KassaBonItem.Hoeveelheid" class="form-control" />
+				<span asp-validation-for="KassaBonItem.Hoeveelheid" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KassaBonItem.PrijsPerItem" class="control-label"></label>
+				<input asp-for="KassaBonItem.PrijsPerItem" class="form-control" />
+				<span asp-validation-for="KassaBonItem.PrijsPerItem" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KassaBonItem.Prijs" class="control-label"></label>
+				<input asp-for="KassaBonItem.Prijs" class="form-control" />
+				<span asp-validation-for="KassaBonItem.Prijs" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KassaBonItem.Korting" class="control-label"></label>
+				<input asp-for="KassaBonItem.Korting" class="form-control" />
+				<span asp-validation-for="KassaBonItem.Korting" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KassaBonItem.Commentaar" class="control-label"></label>
+				<input asp-for="KassaBonItem.Commentaar" class="form-control" />
+				<span asp-validation-for="KassaBonItem.Commentaar" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a href="./Details?Id=@Model.KassaBonItem.KassaBonId">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
