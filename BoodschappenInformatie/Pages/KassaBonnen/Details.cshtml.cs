@@ -42,7 +42,7 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 					.AsNoTracking()
 					.Where(k => k.KassaBonId == id)
 					.OrderByDescending(k => k.KassaBon.BonDate)
-					.OrderBy(k => k.Id) //Show the list as appearing on the paper
+					.OrderBy(k => k.Id) //Show the list as appearing on paper
 					.ToListAsync();
 
 			PageTotalPrijs = KassaBonItem.Sum(s => s.Prijs) - KassaBonItem.Where(s => s.Korting != null).Sum(s => (decimal)s.Korting);

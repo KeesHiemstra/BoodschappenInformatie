@@ -24,7 +24,10 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 		public async Task OnGetAsync()
 		{
 			KassaBon = await _context.KassaBonnen
-					.Include(k => k.Winkel).ToListAsync();
+					.Include(k => k.Winkel)
+					.AsNoTracking()
+					.OrderByDescending(k => k.BonDate)
+					.ToListAsync();
 		}
 	}
 }
