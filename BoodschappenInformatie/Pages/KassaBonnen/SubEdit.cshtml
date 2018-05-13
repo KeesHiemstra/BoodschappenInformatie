@@ -13,16 +13,17 @@
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="KassaBonItem.Id" />
+			<input type="hidden" asp-for="KassaBonItem.KassaBonId" />
 			@*
-				<div class="form-group">
-					<label asp-for="KassaBonItem.KassaBonId" class="control-label"></label>
-					<select asp-for="KassaBonItem.KassaBonId" class="form-control" asp-items="ViewBag.KassaBonId"></select>
-					<span asp-validation-for="KassaBonItem.KassaBonId" class="text-danger"></span>
-				</div>
+		<div class="form-group">
+			<label asp-for="KassaBonItem.KassaBonId" class="control-label"></label>
+			<select asp-for="KassaBonItem.KassaBonId" class="form-control" asp-items="ViewBag.KassaBonId"></select>
+			<span asp-validation-for="KassaBonItem.KassaBonId" class="text-danger"></span>
+		</div>
 			*@
 			<div class="form-group">
 				<label asp-for="KassaBonItem.BoodschapId" class="control-label">Boodschap</label>
-				<select asp-for="KassaBonItem.BoodschapId" class="form-control" asp-items="ViewBag.BoodschapId"></select>
+				<select asp-for="KassaBonItem.BoodschapId" class="form-control" asp-items="ViewBag.BoodschapId" autofocus></select>
 				<span asp-validation-for="KassaBonItem.BoodschapId" class="text-danger"></span>
 			</div>
 			<div class="form-group">

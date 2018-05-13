@@ -23,7 +23,7 @@ namespace BoodschappenInformatie.Pages.KassaBonnen.DetailsItems
 		[BindProperty]
 		public KassaBonItem KassaBonItem { get; set; }
 
-		public async Task<IActionResult> OnGetAsync(int? id, int kassaBonId)
+		public async Task<IActionResult> OnGetAsync(int? id/*, int kassaBonId*/)
 		{
 			if (id == null)
 			{
@@ -38,12 +38,13 @@ namespace BoodschappenInformatie.Pages.KassaBonnen.DetailsItems
 			{
 				return NotFound();
 			}
-			ViewData["BoodschapId"] = new SelectList(_context.Boodschappen, "Id", "BoodschapName");
-			ViewData["KassaBonId"] = new SelectList(_context.KassaBonnen, "Id", "Id");
+			ViewData["BoodschapId"] = new SelectList(_context.Boodschappen, "Id", "BoodschapName")
+				.OrderBy(b => b.Text);
+			//ViewData["KassaBonId"] = new SelectList(_context.KassaBonnen, "Id", "Id");
 			return Page();
 		}
 
-		public async Task<IActionResult> OnPostAsync(int kassaBonId)
+		public async Task<IActionResult> OnPostAsync(/*int kassaBonId*/)
 		{
 			if (!ModelState.IsValid)
 			{
