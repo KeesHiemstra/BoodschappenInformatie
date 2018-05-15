@@ -75,11 +75,58 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 				.Single();
 			if (package == "St")
 			{
-				result = ((int)sum).ToString();
+				result = sum.ToString("0");
 			}
 			else
 			{
-				result = sum.ToString();
+				result = sum.ToString("0.000");
+			}
+
+			return result;
+		}
+
+		public static string GetCalendarRowTotal(this CalendarWeeksModel model, string shopDescription)
+		{
+			string result = string.Empty;
+
+			var calendarDesciptions = model.KassaBonItem.Where(x => x.Boodschap.Description == shopDescription);
+			if (calendarDesciptions == null) { return result; }
+
+			decimal sum = calendarDesciptions.Sum(x => x.Hoeveelheid).Value;
+			if (sum == 0) { return result; }
+
+			string package = calendarDesciptions.Select(x => x.Boodschap.Package)
+				.Distinct() //Resolve when it results as more lines
+				.Single();
+			if (package == "St")
+			{
+				result = sum.ToString("0");
+			}
+			else
+			{
+				result = sum.ToString("0.000");
+			}
+
+			return result;
+		}
+
+		public static string GetCalendarRowAverage(this CalendarWeeksModel model, string shopDescription)
+		{
+			string result = string.Empty;
+
+			var calendarDesciptions = model.KassaBonItem.Where(x => x.Boodschap.Description == shopDescription);
+			if (calendarDesciptions == null) { return result; }
+
+			decimal sum = calendarDesciptions.Sum(x => x.Hoeveelheid).Value;
+			if (sum == 0) { return result; }
+
+			try
+			{
+				result = (sum / model.DateHeader.Count()).ToString("0.0000");
+			}
+			catch (Exception)
+			{
+				return "-";
 			}
 
 			return result;

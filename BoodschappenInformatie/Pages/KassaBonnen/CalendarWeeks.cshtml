@@ -12,6 +12,8 @@
 	<thead>
 		<tr>
 			<th></th>
+			<th>Total</th>
+			<th>Avg</th>
 			@foreach (var column in Model.DateHeader)
 			{
 				<th>
@@ -25,12 +27,15 @@
 		{
 			<tr>
 				<td>@description</td>
+				<td>@Model.GetCalendarRowTotal(description)</td>
+				<td>@Model.GetCalendarRowAverage(description)</td>
 				@foreach (var column in Model.DateHeader)
 				{
 					<td>
 						@Model.GetCalendarCell(description, column)
 					</td>
 				}
+
 			</tr>
 		}
 
