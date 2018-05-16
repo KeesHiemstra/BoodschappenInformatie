@@ -1,0 +1,52 @@
+﻿@page "{PageNumber?}"
+@model BoodschappenInformatie.Pages.KassaBonnen.CalendarWeeksModel
+@{
+	ViewData["Title"] = "CalendarWeeks";
+}
+
+<h2>Calendar in weeks</h2>
+
+<pager total-pages="Model.TotalPages" current-page="Model.PageNumber"></pager>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Total</th>
+			<th>Avg</th>
+			@foreach (var column in Model.DateHeader)
+			{
+				<th>
+					@column
+				</th>
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var description in Model.Descriptions)
+		{
+			var row = Model.GetCalendarRow(description);
+			<tr>
+				<td>@description</td>
+				<td>@row.Total</td>
+				<td>@row.Average</td>
+				@foreach (var column in Model.DateHeader)
+				{
+					<td>
+						@Model.GetCalendarCell(description, column)
+					</td>
+				}
+
+			</tr>
+		}
+
+	</tbody>
+</table>
+
+@section Styles {
+	<style>
+		.pageNumber {
+			margin: 0px 4px;
+		}
+	</style>
+}
