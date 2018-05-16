@@ -14,17 +14,23 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 	public class CalendarWeeksModel : PageModel
 	{
 		private readonly BoodschappenInformatie.Data.BoodschappenContext _context;
+		private const int _PageSize = 10;
 
 		public CalendarWeeksModel(BoodschappenInformatie.Data.BoodschappenContext context)
 		{
 			_context = context;
 		}
 
+		[FromRoute]
+		public int PageNumber { get; set; } = 1;
+		public int TotalPages { get; set; }
+
+
 		public IList<KassaBonItem> KassaBonItem { get; set; }
 		public IEnumerable<string> DateHeader { get; set; }
 		public IEnumerable<string> Descriptions { get; set; }
 
-		public async Task OnGetAsync()
+		public async Task OnGetAsync(int PageNumber = 1)
 		{
 			DateHeader = await _context.KassaBonItems
 				.Select(WeekNumber => WeekNumber.KassaBon.BonDate.WeekNumberString())
@@ -33,9 +39,12 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 				.ToListAsync();
 
 			Descriptions = await _context.KassaBonItems
+				.AsNoTracking()
 				.Select(x => x.Boodschap.Description)
 				.Distinct()
 				.OrderBy(x => x)
+				.Skip((PageNumber - 1) * _PageSize)
+				.Take(_PageSize)
 				.ToListAsync();
 
 			var List = from x in _context.KassaBonItems
@@ -48,10 +57,16 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 								 };
 
 			KassaBonItem = await _context.KassaBonItems
-					.AsNoTracking()
-					.Include(k => k.Boodschap)
-					.Include(k => k.KassaBon)
-					.ToListAsync();
+				.AsNoTracking()
+				.Include(k => k.Boodschap)
+				.Include(k => k.KassaBon)
+				.ToListAsync();
+
+			TotalPages = (int)Math.Ceiling((await _context.KassaBonItems
+				.AsNoTracking()
+				.Select(x => x.Boodschap.Description)
+				.Distinct()
+				.CountAsync()) / (double)_PageSize);
 		}
 	}
 

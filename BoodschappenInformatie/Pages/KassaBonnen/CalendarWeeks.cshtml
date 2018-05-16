@@ -1,12 +1,12 @@
-﻿@page
+﻿@page "{PageNumber?}"
 @model BoodschappenInformatie.Pages.KassaBonnen.CalendarWeeksModel
-@using BoodschappenInformatie.Helpers
-
 @{
 	ViewData["Title"] = "CalendarWeeks";
 }
 
 <h2>Calendar in weeks</h2>
+
+<pager total-pages="Model.TotalPages" current-page="Model.PageNumber"></pager>
 
 <table class="table">
 	<thead>
@@ -40,38 +40,13 @@
 			</tr>
 		}
 
-		@*
-			@foreach (var item in Model.KassaBonItem)
-			{
-				<tr>
-					<td>
-						@Html.DisplayFor(modelItem => item.Hoeveelheid)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.PrijsPerItem)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Prijs)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Korting)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Commentaar)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Boodschap.BoodschapName)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.KassaBon.Id)
-					</td>
-					<td>
-						<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-						<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-						<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-					</td>
-				</tr>
-			}
-		*@
 	</tbody>
 </table>
+
+@section Styles {
+	<style>
+		.pageNumber {
+			margin: 0px 4px;
+		}
+	</style>
+}
