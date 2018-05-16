@@ -25,10 +25,11 @@
 	<tbody>
 		@foreach (var description in Model.Descriptions)
 		{
+			var row = Model.GetCalendarRow(description);
 			<tr>
 				<td>@description</td>
-				<td>@Model.GetCalendarRowTotal(description)</td>
-				<td>@Model.GetCalendarRowAverage(description)</td>
+				<td>@row.Total</td>
+				<td>@row.Average</td>
 				@foreach (var column in Model.DateHeader)
 				{
 					<td>
