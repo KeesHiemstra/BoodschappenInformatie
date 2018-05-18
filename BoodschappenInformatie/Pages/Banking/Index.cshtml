@@ -1,0 +1,103 @@
+﻿@page
+@model BoodschappenInformatie.Pages.Banking.IndexModel
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	<a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Account)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Date)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Mutation)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Amount)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].CounterAccount)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Text)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Month)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].Origin)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].TallyName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].TallyDescription)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Bank[0].RawText)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Bank)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Account)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Date)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Mutation)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Amount)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CounterAccount)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Text)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Month)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Origin)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TallyName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TallyDescription)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.RawText)
+				</td>
+				<td>
+					<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+					<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+					<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

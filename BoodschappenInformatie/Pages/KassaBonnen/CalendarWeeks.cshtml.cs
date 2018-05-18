@@ -25,7 +25,6 @@ namespace BoodschappenInformatie.Pages.KassaBonnen
 		public int PageNumber { get; set; } = 1;
 		public int TotalPages { get; set; }
 
-
 		public IList<KassaBonItem> KassaBonItem { get; set; }
 		public IEnumerable<string> DateHeader { get; set; }
 		public IEnumerable<string> Descriptions { get; set; }
