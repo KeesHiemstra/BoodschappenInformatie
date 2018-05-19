@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using BoodschappenInformatie.Models;
+using System.IO;
+using Newtonsoft.Json;
+using BoodschappenInformatie.Helpers;
 
 namespace BoodschappenInformatie.Pages.Banking
 {
@@ -16,13 +19,30 @@ namespace BoodschappenInformatie.Pages.Banking
 		public CalendarMonthsModel(BoodschappenInformatie.Data.BankContext context)
 		{
 			_context = context;
+
+			//string json = string.Empty;
+			//using (StreamReader sr = new StreamReader("~/BankingTallyMasks.json"))
+			//{
+			//	json = sr.ReadToEnd();
+			//}
+
+			//Patterns = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
 		}
+
+		public IDictionary<string, string> Patterns = new Dictionary<string, string>()
+		{
+			{ "Gezamenlijk af", "^Vast:ABN Af-" },
+			{ "Persoonlijk af", "^Vast:ING Af-" },
+			{ "Onvoorzien af", "^Onverzien:(ABN|ING) Af-" },
+			{ "Inkomsten", "^(Vast|Onverzien):(ABN|ING) Bij-" },
+			{ "Alles", "(^(Vast|Onverzien):(ABN|ING)\\s(Af|Bij)-)" }
+		};
 
 		public IList<Bank> BankRecords { get; set; }
 		public IList<string> Months { get; set; }
 		public IList<string> Tallies { get; set; }
 
-		public async Task OnGetAsync()
+		public async Task OnGetAsync(string pattern = "Persoonlijk af")
 		{
 			Months = await _context.BankRecords
 				.AsNoTracking()
@@ -34,7 +54,7 @@ namespace BoodschappenInformatie.Pages.Banking
 
 			Tallies = _context.BankRecords
 				.AsNoTracking()
-				.Where(x => x.TallyDescription.StartsWith("Vast:ABN Af-"))
+				.Where(x => x.TallyDescription.Match(pattern, true))
 				.OrderBy(x => x.TallyDescription)
 				.Select(x => x.TallyDescription)
 				.Distinct()

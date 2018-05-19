@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BoodschappenInformatie.Pages.Banking;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BoodschappenInformatie.Helpers
@@ -28,7 +31,7 @@ namespace BoodschappenInformatie.Helpers
 		/// <param name="pattern"></param>
 		/// <param name="match"></param>
 		/// <returns></returns>
-		public static bool Match(this string model, string pattern, bool match = true)
+		public static bool Match(this string model, string pattern, bool match)
 		{
 			bool result = false;
 
