@@ -29,6 +29,8 @@ namespace BoodschappenInformatie.Pages.Banking
 			//Patterns = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
 		}
 
+		[FromRoute]
+		public string GroupName { get; set; } = "Gezamenlijk af";
 		public IDictionary<string, string> Patterns = new Dictionary<string, string>()
 		{
 			{ "Gezamenlijk af", "^Vast:ABN Af-" },
@@ -42,8 +44,19 @@ namespace BoodschappenInformatie.Pages.Banking
 		public IList<string> Months { get; set; }
 		public IList<string> Tallies { get; set; }
 
-		public async Task OnGetAsync(string pattern = "Persoonlijk af")
+		public async Task OnGetAsync(string GroupName = "Gezamenlijk af")
 		{
+			if (string.IsNullOrEmpty(GroupName)) { GroupName = Patterns.First().Key; }
+			bool match = true;
+			string matchGroup = GroupName;
+
+			if (Patterns.Where(x => x.Key == GroupName).Count() == 0)
+			{
+				match = false;
+				matchGroup = Patterns.Last().Key;
+			}
+			string pattern = Patterns[matchGroup];
+
 			Months = await _context.BankRecords
 				.AsNoTracking()
 				.Where(x => x.Date >= new DateTime(2018, 1, 1))
@@ -54,7 +67,7 @@ namespace BoodschappenInformatie.Pages.Banking
 
 			Tallies = _context.BankRecords
 				.AsNoTracking()
-				.Where(x => x.TallyDescription.Match(pattern, true))
+				.Where(x => x.TallyDescription.Match(pattern, match))
 				.OrderBy(x => x.TallyDescription)
 				.Select(x => x.TallyDescription)
 				.Distinct()

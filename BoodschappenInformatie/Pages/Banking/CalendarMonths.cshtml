@@ -1,10 +1,12 @@
-﻿@page
+﻿@page "{GroupName?}"
 @model BoodschappenInformatie.Pages.Banking.CalendarMonthsModel
 @{
 	ViewData["Title"] = "CalendarMonths";
 }
 
 <h2>Bank calendar per months</h2>
+
+<groups groups="@Model.Patterns" current-group="@Model.GroupName" remaining-group="Rest"></groups>
 
 <table class="table">
 	<thead>
@@ -29,3 +31,11 @@
 		}
 	</tbody>
 </table>
+
+@section Styles {
+	<style>
+		.groupName {
+			margin: 0px 4px;
+		}
+	</style>
+}
