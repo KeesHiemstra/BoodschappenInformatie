@@ -1,0 +1,80 @@
+﻿@page
+@model BoodschappenInformatie.Pages.Banking.EditModel
+
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Bank</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Bank.Id" />
+			<div class="form-group">
+				<label asp-for="Bank.Account" class="control-label"></label>
+				<input asp-for="Bank.Account" class="form-control" />
+				<span asp-validation-for="Bank.Account" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Date" class="control-label"></label>
+				<input asp-for="Bank.Date" class="form-control" />
+				<span asp-validation-for="Bank.Date" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Mutation" class="control-label"></label>
+				<input asp-for="Bank.Mutation" class="form-control" />
+				<span asp-validation-for="Bank.Mutation" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Amount" class="control-label"></label>
+				<input asp-for="Bank.Amount" class="form-control" />
+				<span asp-validation-for="Bank.Amount" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Name" class="control-label"></label>
+				<input asp-for="Bank.Name" class="form-control" />
+				<span asp-validation-for="Bank.Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.CounterAccount" class="control-label"></label>
+				<input asp-for="Bank.CounterAccount" class="form-control" />
+				<span asp-validation-for="Bank.CounterAccount" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Text" class="control-label"></label>
+				<input asp-for="Bank.Text" class="form-control" />
+				<span asp-validation-for="Bank.Text" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Origin" class="control-label"></label>
+				<input asp-for="Bank.Origin" class="form-control" />
+				<span asp-validation-for="Bank.Origin" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.Tally" class="control-label"></label>
+				<input asp-for="Bank.Tally" class="form-control" />
+				<span asp-validation-for="Bank.Tally" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bank.RawText" class="control-label"></label>
+				<input asp-for="Bank.RawText" class="form-control" />
+				<span asp-validation-for="Bank.RawText" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

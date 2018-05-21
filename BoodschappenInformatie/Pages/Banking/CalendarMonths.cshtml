@@ -1,0 +1,41 @@
+﻿@page "{GroupName?}"
+@model BoodschappenInformatie.Pages.Banking.CalendarMonthsModel
+@{
+	ViewData["Title"] = "CalendarMonths";
+}
+
+<h2>Bank calendar per months</h2>
+
+<groups groups="@Model.Patterns" current-group="@Model.GroupName" remaining-group="Rest"></groups>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			@foreach (var month in Model.Months)
+			{
+				<th>@month</th>
+			}
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var tally in Model.Tallies)
+		{
+			<tr>
+				<td>@tally</td>
+				@foreach (var month in Model.Months)
+				{
+					<td>@Model.GetCalendarCell(tally, month)</td>
+				}
+			</tr>
+		}
+	</tbody>
+</table>
+
+@section Styles {
+	<style>
+		.groupName {
+			margin: 0px 4px;
+		}
+	</style>
+}

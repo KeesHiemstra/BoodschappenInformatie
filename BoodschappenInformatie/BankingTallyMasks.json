@@ -1,0 +1,7 @@
+﻿{
+	"Gezamenlijk af": "^Vast:ABN Af-",
+	"Persoonlijk af": "^Vast:ING Af-",
+	"Onvoorzien af": "^Onverzien:(ABN|ING) Af-",
+	"Inkomsten": "^(Vast|Onverzien):(ABN|ING) Bij-",
+	"Alles": "(^(Vast|Onverzien):(ABN|ING)\\s(Af|Bij)-)"
+}

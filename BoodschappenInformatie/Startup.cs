@@ -27,6 +27,10 @@ namespace BoodschappenInformatie
 				options.UseSqlServer(
 					Configuration.GetConnectionString("BoodschappenConnection")));
 
+			services.AddDbContext<BankContext>(options =>
+			options.UseSqlServer(
+				Configuration.GetConnectionString("BankConnection")));
+
 			services.AddMvc();
 		}
 
