@@ -59,7 +59,7 @@ namespace BoodschappenInformatie.Pages.Banking
 
 			Months = await _context.BankRecords
 				.AsNoTracking()
-				.Where(x => x.Date >= new DateTime(2018, 1, 1))
+				.Where(x => x.Date >= new DateTime(2017, 09, 1))
 				.Select(x => x.Month)
 				.Distinct()
 				.OrderByDescending(x => x)

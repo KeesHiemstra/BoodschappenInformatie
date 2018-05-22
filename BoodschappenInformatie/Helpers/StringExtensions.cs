@@ -18,7 +18,23 @@ namespace BoodschappenInformatie.Helpers
 		/// <returns></returns>
 		public static string ShortAccountNumber(this string account)
 		{
-			var result = account.Substring(account.Length - 10);
+			string result = account.Substring(account.Length - 10);
+			return result;
+		}
+		#endregion
+
+		#region ShortTallyDescription
+		public static string ShortTallyDescription(this string tallyDescription)
+		{
+			string result = tallyDescription;
+
+			if (string.IsNullOrEmpty(tallyDescription)) { return result; }
+			if (tallyDescription.Contains('-'))
+			{
+				if (tallyDescription.EndsWith('-')) { return result; }
+				result = tallyDescription.Substring(tallyDescription.IndexOf('-') + 1);
+			}
+
 			return result;
 		}
 		#endregion

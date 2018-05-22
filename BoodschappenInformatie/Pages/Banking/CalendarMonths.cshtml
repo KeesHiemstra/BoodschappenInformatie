@@ -1,5 +1,6 @@
 ﻿@page "{GroupName?}"
 @model BoodschappenInformatie.Pages.Banking.CalendarMonthsModel
+@using BoodschappenInformatie.Helpers
 @{
 	ViewData["Title"] = "CalendarMonths";
 }
@@ -22,7 +23,7 @@
 		@foreach (var tally in Model.Tallies)
 		{
 			<tr>
-				<td>@tally</td>
+				<td>@tally.ShortTallyDescription()</td>
 				@foreach (var month in Model.Months)
 				{
 					<td>@Model.GetCalendarCell(tally, month)</td>
