@@ -1,5 +1,6 @@
 ﻿@page
 @model BoodschappenInformatie.Pages.Banking.IndexModel
+@using BoodschappenInformatie.Helpers
 
 @{
 	ViewData["Title"] = "Index";
@@ -17,10 +18,7 @@
 				@Html.DisplayNameFor(model => model.Bank[0].Account)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].Date)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].Mutation)
+				@Html.DisplayNameFor(model => model.Bank[0].Month)
 			</th>
 			<th>
 				@Html.DisplayNameFor(model => model.Bank[0].Amount)
@@ -29,25 +27,10 @@
 				@Html.DisplayNameFor(model => model.Bank[0].Name)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].CounterAccount)
+				@Html.DisplayNameFor(model => model.Bank[0].Mutation)
 			</th>
 			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].Text)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].Month)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].Origin)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].TallyName)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].TallyDescription)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Bank[0].RawText)
+				Tally
 			</th>
 			<th></th>
 		</tr>
@@ -57,13 +40,10 @@
 		{
 			<tr>
 				<td>
-					@Html.DisplayFor(modelItem => item.Account)
+					@item.Account.ShortAccountNumber()
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.Date)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Mutation)
+					@Html.DisplayFor(modelItem => item.Month)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Amount)
@@ -72,30 +52,14 @@
 					@Html.DisplayFor(modelItem => item.Name)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.CounterAccount)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Text)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Month)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Origin)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.TallyName)
+					@Html.DisplayFor(modelItem => item.Mutation)
 				</td>
 				<td>
 					@Html.DisplayFor(modelItem => item.TallyDescription)
 				</td>
 				<td>
-					@Html.DisplayFor(modelItem => item.RawText)
-				</td>
-				<td>
 					<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-					<a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-					<a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+					<a asp-page="./Details" asp-route-id="@item.Id">Details</a>
 				</td>
 			</tr>
 		}
