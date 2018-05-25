@@ -30,6 +30,13 @@ namespace BoodschappenInformatie.Pages.Banking
 				return NotFound();
 			}
 
+			//Tallies = await _context.BankRecords
+			//	.AsNoTracking()
+			//	.OrderBy(x => x.TallyDescription)
+			//	.Select(x => x.TallyDescription)
+			//	.Distinct()
+			//	.ToListAsync();
+
 			Bank = await _context.BankRecords.SingleOrDefaultAsync(m => m.Id == id);
 
 			if (Bank == null)

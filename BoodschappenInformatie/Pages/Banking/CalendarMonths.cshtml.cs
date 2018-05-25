@@ -35,9 +35,9 @@ namespace BoodschappenInformatie.Pages.Banking
 		{
 			{ "Gezamenlijk af", "^Vast:ABN Af-" },
 			{ "Persoonlijk af", "^Vast:ING Af-" },
-			{ "Onvoorzien af", "^Onverzien:(ABN|ING) Af-" },
-			{ "Inkomsten", "^(Vast|Onverzien):(ABN|ING) Bij-" },
-			{ "Alles", "(^(Vast|Onverzien):(ABN|ING)\\s(Af|Bij)-)" }
+			{ "Onvoorzien af", "^Onvoorzien:(ABN|ING) Af-" },
+			{ "Inkomsten", "^(Vast|Onvoorzien):(ABN|ING) Bij-" },
+			{ "Alles", "(^(Vast|Onvoorzien):(ABN|ING)\\s(Af|Bij)-)" }
 		};
 
 		public IList<Bank> BankRecords { get; set; }

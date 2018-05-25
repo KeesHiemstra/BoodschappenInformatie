@@ -5,64 +5,97 @@
 	ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit bank</h2>
 
-<h4>Bank</h4>
 <hr />
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="Bank.Id" />
+			<input type="hidden" asp-for="Bank.Account" />
+			<input type="hidden" asp-for="Bank.Date" />
+			<input type="hidden" asp-for="Bank.Month" />
+			<input type="hidden" asp-for="Bank.Mutation" />
+			<input type="hidden" asp-for="Bank.Amount" />
+			<input type="hidden" asp-for="Bank.Name" />
+			<input type="hidden" asp-for="Bank.CounterAccount" />
+			<input type="hidden" asp-for="Bank.Text" />
+			<input type="hidden" asp-for="Bank.Origin" />
+			<input type="hidden" asp-for="Bank.RawText" />
+			<input type="hidden" asp-for="Bank.TallyName" />
+
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Account)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Account)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Date)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Date)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Month)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Month)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Mutation)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Mutation)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Amount)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Amount)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Name)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Name)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.CounterAccount)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.CounterAccount)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Text)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Text)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.Origin)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.Origin)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(model => model.Bank.TallyName)
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Bank.TallyName)
+				</dd>
+			</dl>
 			<div class="form-group">
-				<label asp-for="Bank.Account" class="control-label"></label>
-				<input asp-for="Bank.Account" class="form-control" />
-				<span asp-validation-for="Bank.Account" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Date" class="control-label"></label>
-				<input asp-for="Bank.Date" class="form-control" />
-				<span asp-validation-for="Bank.Date" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Mutation" class="control-label"></label>
-				<input asp-for="Bank.Mutation" class="form-control" />
-				<span asp-validation-for="Bank.Mutation" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Amount" class="control-label"></label>
-				<input asp-for="Bank.Amount" class="form-control" />
-				<span asp-validation-for="Bank.Amount" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Name" class="control-label"></label>
-				<input asp-for="Bank.Name" class="form-control" />
-				<span asp-validation-for="Bank.Name" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.CounterAccount" class="control-label"></label>
-				<input asp-for="Bank.CounterAccount" class="form-control" />
-				<span asp-validation-for="Bank.CounterAccount" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Text" class="control-label"></label>
-				<input asp-for="Bank.Text" class="form-control" />
-				<span asp-validation-for="Bank.Text" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Origin" class="control-label"></label>
-				<input asp-for="Bank.Origin" class="form-control" />
-				<span asp-validation-for="Bank.Origin" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.Tally" class="control-label"></label>
-				<input asp-for="Bank.Tally" class="form-control" />
-				<span asp-validation-for="Bank.Tally" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Bank.RawText" class="control-label"></label>
-				<input asp-for="Bank.RawText" class="form-control" />
-				<span asp-validation-for="Bank.RawText" class="text-danger"></span>
+				<label asp-for="Bank.TallyDescription" class="control-label"></label>
+				<input asp-for="Bank.TallyDescription" class="form-control" />
+				@*
+					<select asp-for="@Model.Bank.TallyDescription" asp-items="@Model.Tallies">
+						<option value="@Model.Bank.TallyDescription">@Model.Bank.TallyDescription</option>
+					</select>
+				*@
+				<span asp-validation-for="Bank.TallyDescription" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<input type="submit" value="Save" class="btn btn-default" />

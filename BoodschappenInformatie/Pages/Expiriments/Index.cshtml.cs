@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using BoodschappenInformatie.Data;
 using BoodschappenInformatie.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace BoodschappenInformatie.Pages.Banking
+namespace BoodschappenInformatie.Pages.Expiriments
 {
 	public class IndexModel : PageModel
 	{
@@ -20,28 +19,28 @@ namespace BoodschappenInformatie.Pages.Banking
 			_context = context;
 		}
 
+		//Original line
 		public IList<Bank> Bank { get; set; }
 
 		public async Task OnGetAsync(string searchMonth, string searchTally)
 		{
-			var _Bank = from db in _context.BankRecords
-									select db;
+			//var z = SearchMonth;
+			var bank = from db in _context.BankRecords
+								 select db;
 
 			if (!string.IsNullOrEmpty(searchMonth))
 			{
-				//Add filter on Month
-				_Bank = _Bank.Where(x => x.Month == searchMonth);
+				bank = bank.Where(x => x.Month == searchMonth);
 			}
 
 			if (!string.IsNullOrEmpty(searchTally))
 			{
-				//Add filter on TallyName
-				_Bank = _Bank.Where(x => x.TallyName == searchTally);
+				bank = bank.Where(x => x.TallyName == searchTally);
 			}
 
-			Bank = await _Bank
+			Bank = await bank
 				.AsNoTracking()
-				.OrderByDescending(x => x.Date)
+				.Where(x => x.Date >= new DateTime(2018, 03, 15))
 				.ToListAsync();
 		}
 	}

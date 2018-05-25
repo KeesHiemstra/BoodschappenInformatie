@@ -14,29 +14,29 @@ namespace BoodschappenInformatie.Models
 		public int Id { get; set; }
 
 		[Required]
-		[Editable(false)]
+		//[Editable(false)]
 		public string Account { get; set; }
 
 		[Required]
-		[Editable(false)]
+		//[Editable(false)]
 		[DataType(DataType.Date)]
 		public System.DateTime Date { get; set; }
 
 		[Required]
-		[Editable(false)]
+		//[Editable(false)]
 		public string Mutation { get; set; }
 
 		[Required]
-		[Editable(false)]
+		//[Editable(false)]
 		public decimal Amount { get; set; }
 
-		[Editable(false)]
+		//[Editable(false)]
 		public string Name { get; set; }
 
-		[Editable(false)]
+		//[Editable(false)]
 		public string CounterAccount { get; set; }
 
-		[Editable(false)]
+		//[Editable(false)]
 		public string Text { get; set; }
 
 		public string Month { get; set; }
@@ -47,7 +47,7 @@ namespace BoodschappenInformatie.Models
 
 		public string TallyDescription { get; set; }
 
-		[Editable(false)]
+		//[Editable(false)]
 		public string RawText { get; set; }
 	}
 }

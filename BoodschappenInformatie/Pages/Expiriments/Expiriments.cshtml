@@ -1,0 +1,20 @@
+﻿@page
+@model BoodschappenInformatie.Pages.Expiriments.ExpirimentsModel
+@{
+	ViewData["Title"] = "Expiriments";
+}
+
+<h2>Expiriments</h2>
+
+<p>
+	Start index <a href="~/Expiriments/Index">without</a> parameter
+</p>
+<p>
+	Start index with <a href="~/Expiriments/Index?searchMonth=2018-04">month parameter</a>
+</p>
+<p>
+	Start index with <a href="~/Expiriments/Index?searchTally=Boodschappen%20Meerkerk">tally parameter</a>
+</p>
+<p>
+	Start index with <a href="~/Expiriments/Index?searchMonth=2018-04&searchTally=Boodschappen%20Meerkerk">month and tally parameter</a>
+</p>
