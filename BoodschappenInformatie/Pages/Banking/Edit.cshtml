@@ -12,6 +12,8 @@
 	<div class="col-md-4">
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="searchMonth" />
+			<input type="hidden" asp-for="searchTally" />
 			<input type="hidden" asp-for="Bank.Id" />
 			<input type="hidden" asp-for="Bank.Account" />
 			<input type="hidden" asp-for="Bank.Date" />

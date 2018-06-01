@@ -60,7 +60,7 @@ namespace BoodschappenInformatie.Pages.Banking
 			Months = await _context.BankRecords
 				.AsNoTracking()
 				.Where(x => x.Date >= new DateTime(2017, 09, 1))
-				.Select(x => x.Month)
+				.Select(x => x.Month.Trim())
 				.Distinct()
 				.OrderByDescending(x => x)
 				.ToListAsync();
@@ -86,7 +86,7 @@ namespace BoodschappenInformatie.Pages.Banking
 			string result = string.Empty;
 
 			var calendarCell = model.BankRecords
-				.Where(x => x.TallyDescription == tally && x.Month == month)
+				.Where(x => x.TallyDescription == tally && x.Month.Trim() == month)
 				.ToList();
 			if (calendarCell == null) { return result; }
 

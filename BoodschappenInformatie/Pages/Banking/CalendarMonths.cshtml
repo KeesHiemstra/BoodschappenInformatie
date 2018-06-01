@@ -26,7 +26,13 @@
 				<td>@tally.ShortTallyDescription()</td>
 				@foreach (var month in Model.Months)
 				{
-					<td>@Model.GetCalendarCell(tally, month)</td>
+					<td>
+						<a href="~/Banking/Index?searchTally=@tally&searchMonth=@month">
+							<div style="height:100%;width:100%">
+								@Model.GetCalendarCell(tally, month)
+							</div>
+						</a>
+					</td>
 				}
 			</tr>
 		}

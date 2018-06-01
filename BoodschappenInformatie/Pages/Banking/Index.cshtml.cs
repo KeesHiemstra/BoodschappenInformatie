@@ -42,8 +42,8 @@ namespace BoodschappenInformatie.Pages.Banking
 
 			if (!string.IsNullOrEmpty(searchTally))
 			{
-				//Add filter on TallyName
-				_Bank = _Bank.Where(x => x.TallyName == searchTally);
+				//Add filter on TallyDescription
+				_Bank = _Bank.Where(x => x.TallyDescription == searchTally);
 			}
 
 			Bank = await _Bank

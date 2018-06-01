@@ -23,7 +23,10 @@ namespace BoodschappenInformatie.Pages.Banking
 		[BindProperty]
 		public Bank Bank { get; set; }
 
-		public async Task<IActionResult> OnGetAsync(int? id)
+		public string searchMonth { get; set; }
+		public string searchTally { get; set; }
+
+		public async Task<IActionResult> OnGetAsync(int? id, string searchMonth, string searchTally)
 		{
 			if (id == null)
 			{
