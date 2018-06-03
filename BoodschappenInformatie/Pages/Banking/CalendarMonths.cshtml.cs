@@ -68,9 +68,9 @@ namespace BoodschappenInformatie.Pages.Banking
 			Tallies = _context.BankRecords
 				.AsNoTracking()
 				.Where(x => x.TallyDescription.Match(pattern, match))
-				.OrderBy(x => x.TallyDescription)
 				.Select(x => x.TallyDescription)
 				.Distinct()
+				.OrderBy(x => x.ShortTallyDescription())
 				.ToList();
 
 			BankRecords = _context.BankRecords
