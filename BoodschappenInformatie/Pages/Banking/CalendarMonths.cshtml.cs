@@ -31,6 +31,10 @@ namespace BoodschappenInformatie.Pages.Banking
 
 		[FromRoute]
 		public string GroupName { get; set; } = "Gezamenlijk af";
+		[FromRoute]
+		public int CurrentPage { get; set; } = 1;
+		public int TotalPages { get; set; }
+
 		public IDictionary<string, string> Patterns = new Dictionary<string, string>()
 		{
 			{ "Gezamenlijk af", "^Vast:ABN Af-" },
@@ -41,10 +45,11 @@ namespace BoodschappenInformatie.Pages.Banking
 		};
 
 		public IList<Bank> BankRecords { get; set; }
+		public IList<string> AllMonths { get; set; }
 		public IList<string> Months { get; set; }
 		public IList<string> Tallies { get; set; }
 
-		public async Task OnGetAsync(string GroupName = "Gezamenlijk af")
+		public async Task OnGetAsync(string GroupName = "Gezamenlijk af", int? CurrentPage = 1)
 		{
 			if (string.IsNullOrEmpty(GroupName)) { GroupName = Patterns.First().Key; }
 			bool match = true;
@@ -57,13 +62,20 @@ namespace BoodschappenInformatie.Pages.Banking
 			}
 			string pattern = Patterns[matchGroup];
 
-			Months = await _context.BankRecords
+			AllMonths = await _context.BankRecords
 				.AsNoTracking()
-				.Where(x => x.Date >= new DateTime(2017, 09, 1))
+				//.Where(x => x.Date >= new DateTime(2017, 09, 1))
 				.Select(x => x.Month.Trim())
 				.Distinct()
 				.OrderByDescending(x => x)
 				.ToListAsync();
+
+			TotalPages = (int)Math.Ceiling((double)(AllMonths.Count()) / 6.0);
+
+			Months = AllMonths
+				.Skip(((CurrentPage ?? 1) - 1) * 6)
+				.Take(9)
+				.ToList();
 
 			Tallies = _context.BankRecords
 				.AsNoTracking()

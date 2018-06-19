@@ -1,4 +1,4 @@
-﻿@page "{GroupName?}"
+﻿@page "{GroupName,CurrentPage:int?}"
 @model BoodschappenInformatie.Pages.Banking.CalendarMonthsModel
 @using BoodschappenInformatie.Helpers
 @{
@@ -8,6 +8,7 @@
 <h2>Bank calendar per months</h2>
 
 <groups groups="@Model.Patterns" current-group="@Model.GroupName" remaining-group="Rest"></groups>
+<pager total-pages="@Model.TotalPages" current-page="@Model.CurrentPage"></pager>
 
 <table class="table">
 	<thead>
